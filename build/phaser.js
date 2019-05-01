@@ -42471,8 +42471,11 @@ Phaser.Pointer.prototype = {
             this.movementY += this.rawMovementY;
         }
 
-        this.x = (this.pageX - this.game.scale.offset.x) * input.scale.x;
-        this.y = (this.pageY - this.game.scale.offset.y) * input.scale.y;
+        // THUNKABLE CHANGE TO FIX INPUT X & Y ON MOBILE
+        // this.x = (this.pageX - this.game.scale.offset.x) * input.scale.x;
+        // this.y = (this.pageY - this.game.scale.offset.y) * input.scale.y;
+        this.x = event.locationX * input.scale.x;
+        this.y = event.locationY * input.scale.y;
 
         this.position.setTo(this.x, this.y);
         this.circle.x = this.x;
